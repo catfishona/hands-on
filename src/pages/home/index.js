@@ -1,7 +1,11 @@
-import gif from "data/gif";
+import gifs from "data/gifs";
 import { ImageComponent } from "components/Gif/index";
 
 function Home() {
+  const gifList = gifs.map((gif, id) => (gif.rating === "g") &&
+      <ImageComponent key={id} url={gif.url} title={gif.title}/>
+  );
+  
   return (
     <div>
       <br />
@@ -13,7 +17,7 @@ function Home() {
       <button>Search</button>
       <br />
       <br />
-      <ImageComponent url={gif.url} title={gif.title} titleText={gif.title} />
+      {gifList};
     </div>
   );
 }
