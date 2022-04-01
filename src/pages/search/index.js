@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ImageComponent } from "components/Gif";
+import { SearchBar } from "components/SearchBar";
 
 function Search() {
   const [gifs, setGifs] = useState([]);
@@ -16,19 +17,10 @@ function Search() {
         return response.data.data;
       })
       .catch((e) => console.log(e));
-
     console.log(datas);
-
     // check if data is found
     datas.length > 0 ? isFound(true) : isFound(false);
-    //TODO: found still returns false
-    // found ? console.log("data found !") : console.log("no data found");
-
     setGifs(datas);
-  };
-
-  const getInput = (e) => {
-    setQuery(e.target.value);
   };
 
   const searchInput = (e) => {
@@ -39,36 +31,22 @@ function Search() {
 
   return (
     <div>
-      <form onSubmit={searchInput}>
-        <input
-          className="input-area"
-          type="text"
-          placeholder="Search for a gif"
-          value={query}
-          onChange={getInput}
-        ></input>
-        <button type="submit">Search</button>
-
-        {found ? (
-          gifs.map((gif, id) => (
-            <ImageComponent
-              key={id}
-              url={gif.images.fixed_height.url}
-              title={gif.title}
-            />
-          ))
-        ) : (
-          <p>No data to show</p>
-        )}
-      </form>
-
-      {gifs.map((gif, id) => (
-        <ImageComponent
-          key={id}
-          url={gif.images.fixed_height.url}
-          title={gif.title}
-        />
-      ))}
+      <SearchBar
+        searchInput={searchInput}
+        query={query}
+        getInput={(e) => setQuery(e.target.value)}
+      />
+      {found ? (
+        gifs.map((gif, id) => (
+          <ImageComponent
+            key={id}
+            url={gif.images.fixed_height.url}
+            title={gif.title}
+          />
+        ))
+      ) : (
+        <p>No data to show</p>
+      )}
     </div>
   );
 }
