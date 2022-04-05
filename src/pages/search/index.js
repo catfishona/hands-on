@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { ImageComponent } from "components/Gif";
 import { SearchBar } from "components/SearchBar";
+import { searchAction } from "../../store/slices";
 
 function Search() {
   const [gifs, setGifs] = useState([]);
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
+  let { query } = useSelector((state) => state.search);   // same as : const query = useSelector((state) => state.search.query)
+  const dispatch = useDispatch();
   const [found, isFound] = useState(false);
 
   const getGifs = async (query) => {
@@ -34,7 +38,8 @@ function Search() {
       <SearchBar
         searchInput={searchInput}
         query={query}
-        getInput={(e) => setQuery(e.target.value)}
+        // getInput={(e) => setQuery(e.target.value)}
+        getInput={(e) => dispatch(searchAction(e.target.value))}
       />
       {found ? (
         gifs.map((gif, id) => (
