@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { ImageComponent } from "components/Gif";
 import { SearchBar } from "components/SearchBar";
-import { searchAction } from "../../store/slices";
+import { searchAction } from "../../redux/slices";
 
 function Search() {
   const [gifs, setGifs] = useState([]);
