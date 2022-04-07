@@ -6,14 +6,14 @@ export const searchSlice = createSlice({
         query: "",
     },
     reducers: {
-        searchAction: (state, action) => {
+        setQuery: (state, action) => {
            state.query = action.payload;
         }
     }
 });
 
 // export action
-export const { searchQuery, searchAction } = searchSlice.actions;
+export const { setQuery } = searchSlice.actions;
 
-// export recucer
+// export reducer
 export default searchSlice.reducer;
