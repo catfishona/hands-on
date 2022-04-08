@@ -22,8 +22,11 @@ const Nav = () => {
           <Route path="/search">
             <Search />
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <Trending />
+          </Route>
+          <Route path="*">
+            <h1>Page Not found!</h1>
           </Route>
         </Switch>
       </div>
