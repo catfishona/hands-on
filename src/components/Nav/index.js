@@ -26,7 +26,7 @@ const Nav = () => {
             <Trending />
           </Route>
           <Route path="*">
-            <h1>Page Not found!</h1>
+            <h1>Page Not Found!</h1>
           </Route>
         </Switch>
       </div>

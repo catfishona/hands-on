@@ -1,3 +1,4 @@
+import React from "react"
 import gifs from "data/gifs";
 import { ImageComponent } from "components/Gif/index";
 
@@ -8,15 +9,6 @@ function Home() {
   
   return (
     <div>
-      <br />
-      <input
-        className="input-area"
-        type="text"
-        placeholder="What are you looking for?"
-      ></input>
-      <button>Search</button>
-      <br />
-      <br />
       {gifList};
     </div>
   );

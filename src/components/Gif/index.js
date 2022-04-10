@@ -1,3 +1,6 @@
+import React from "react";
+import { string } from "prop-types";
+
 const ImageComponent = (props) => {
   return (
     <div>
@@ -7,4 +10,8 @@ const ImageComponent = (props) => {
   );
 };
 
+ImageComponent.propTypes = {
+  url: string,
+  title: string,
+};
 export { ImageComponent };

@@ -1,3 +1,6 @@
+import React from "react";
+import { func, string } from "prop-types";
+
 const SearchBar = (props) => {
   return (
     <form onSubmit={props.searchInput}>
@@ -11,6 +14,12 @@ const SearchBar = (props) => {
       <button type="submit">Search</button>
     </form>
   );
+};
+
+SearchBar.propTypes = {
+  searchInput: func.isRequired,
+  query: string,
+  getInput: func,
 };
 
 export { SearchBar };
